@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active:  
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:test;DB_CLOSE_ON_EXIT=FALSE
+    username: root
+    password: root
+    hikari:
+      minimumIdle: 30
+      idleTimeout: 180000
+      maximumPoolSize: 100
+      autoCommit: true
+      poolName: HikariCP
+      maxLifetime: 1200000
+      connectionTimeout: 30000
+      leakDetectionThreshold: 5000
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+# Enabling H2 Console
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  devtools:
+    add-properties: true
+
